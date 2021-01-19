@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_audio = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.LanClick = new System.Windows.Forms.Button();
             this.pic_audio = new System.Windows.Forms.PictureBox();
             this.cb_level = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -76,20 +78,41 @@
             // panel_audio
             // 
             this.panel_audio.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel_audio.BackColor = System.Drawing.Color.LightCyan;
+            this.panel_audio.Controls.Add(this.textBox1);
+            this.panel_audio.Controls.Add(this.LanClick);
             this.panel_audio.Controls.Add(this.pic_audio);
             this.panel_audio.Controls.Add(this.cb_level);
-            this.panel_audio.Location = new System.Drawing.Point(9, 8);
+            this.panel_audio.Location = new System.Drawing.Point(3, 3);
             this.panel_audio.Name = "panel_audio";
-            this.panel_audio.Size = new System.Drawing.Size(111, 36);
+            this.panel_audio.Size = new System.Drawing.Size(157, 52);
             this.panel_audio.TabIndex = 9;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(56, 29);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(98, 20);
+            this.textBox1.TabIndex = 10;
+            // 
+            // LanClick
+            // 
+            this.LanClick.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LanClick.Location = new System.Drawing.Point(0, 27);
+            this.LanClick.Name = "LanClick";
+            this.LanClick.Size = new System.Drawing.Size(54, 23);
+            this.LanClick.TabIndex = 3;
+            this.LanClick.Text = "LAN";
+            this.LanClick.UseVisualStyleBackColor = false;
+            this.LanClick.Click += new System.EventHandler(this.LanClick_Click);
             // 
             // pic_audio
             // 
             this.pic_audio.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pic_audio.Image = ((System.Drawing.Image)(resources.GetObject("pic_audio.Image")));
-            this.pic_audio.Location = new System.Drawing.Point(81, 7);
+            this.pic_audio.Location = new System.Drawing.Point(112, 0);
             this.pic_audio.Name = "pic_audio";
-            this.pic_audio.Size = new System.Drawing.Size(27, 24);
+            this.pic_audio.Size = new System.Drawing.Size(41, 28);
             this.pic_audio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_audio.TabIndex = 9;
             this.pic_audio.TabStop = false;
@@ -98,7 +121,7 @@
             // cb_level
             // 
             this.cb_level.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cb_level.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.cb_level.BackColor = System.Drawing.Color.LightBlue;
             this.cb_level.DisplayMember = "Dễ";
             this.cb_level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_level.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -109,9 +132,9 @@
             "Vừa",
             "Khó",
             "Custom"});
-            this.cb_level.Location = new System.Drawing.Point(3, 3);
+            this.cb_level.Location = new System.Drawing.Point(0, 0);
             this.cb_level.Name = "cb_level";
-            this.cb_level.Size = new System.Drawing.Size(76, 28);
+            this.cb_level.Size = new System.Drawing.Size(111, 28);
             this.cb_level.TabIndex = 2;
             this.cb_level.Tag = "";
             this.cb_level.TextChanged += new System.EventHandler(this.cb_level_TextChanged);
@@ -126,9 +149,9 @@
             this.panel3.Controls.Add(this.label_flag);
             this.panel3.Controls.Add(this.pic_flag);
             this.panel3.Controls.Add(this.pic_clock);
-            this.panel3.Location = new System.Drawing.Point(126, 0);
+            this.panel3.Location = new System.Drawing.Point(140, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(324, 55);
+            this.panel3.Size = new System.Drawing.Size(308, 55);
             this.panel3.TabIndex = 3;
             // 
             // panel4
@@ -147,7 +170,7 @@
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(24, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(52, 40);
             this.menuStrip1.TabIndex = 9;
@@ -172,7 +195,7 @@
             // 
             this.newGameToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
@@ -180,7 +203,7 @@
             // 
             this.saveGameToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.saveGameToolStripMenuItem.Text = "Kỷ Lục";
             this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameToolStripMenuItem_Click);
             // 
@@ -188,7 +211,7 @@
             // 
             this.tùyChỉnhToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tùyChỉnhToolStripMenuItem.Name = "tùyChỉnhToolStripMenuItem";
-            this.tùyChỉnhToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.tùyChỉnhToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.tùyChỉnhToolStripMenuItem.Text = "Tùy Chỉnh";
             this.tùyChỉnhToolStripMenuItem.Click += new System.EventHandler(this.tùyChỉnhToolStripMenuItem_Click);
             // 
@@ -196,7 +219,7 @@
             // 
             this.hướngDẫnCáchChơiToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.hướngDẫnCáchChơiToolStripMenuItem.Name = "hướngDẫnCáchChơiToolStripMenuItem";
-            this.hướngDẫnCáchChơiToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.hướngDẫnCáchChơiToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.hướngDẫnCáchChơiToolStripMenuItem.Text = "Hướng Dẫn";
             this.hướngDẫnCáchChơiToolStripMenuItem.Click += new System.EventHandler(this.hướngDẫnCáchChơiToolStripMenuItem_Click);
             // 
@@ -204,7 +227,7 @@
             // 
             this.aboutToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -212,9 +235,9 @@
             // 
             this.pic_trangthai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pic_trangthai.Image = ((System.Drawing.Image)(resources.GetObject("pic_trangthai.Image")));
-            this.pic_trangthai.Location = new System.Drawing.Point(83, 3);
+            this.pic_trangthai.Location = new System.Drawing.Point(79, 3);
             this.pic_trangthai.Name = "pic_trangthai";
-            this.pic_trangthai.Size = new System.Drawing.Size(57, 43);
+            this.pic_trangthai.Size = new System.Drawing.Size(41, 43);
             this.pic_trangthai.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_trangthai.TabIndex = 8;
             this.pic_trangthai.TabStop = false;
@@ -226,7 +249,7 @@
             this.label_time.AutoSize = true;
             this.label_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_time.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label_time.Location = new System.Drawing.Point(278, 17);
+            this.label_time.Location = new System.Drawing.Point(276, 17);
             this.label_time.Name = "label_time";
             this.label_time.Size = new System.Drawing.Size(19, 20);
             this.label_time.TabIndex = 4;
@@ -238,7 +261,7 @@
             this.label_flag.AutoSize = true;
             this.label_flag.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_flag.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label_flag.Location = new System.Drawing.Point(199, 16);
+            this.label_flag.Location = new System.Drawing.Point(183, 17);
             this.label_flag.Name = "label_flag";
             this.label_flag.Size = new System.Drawing.Size(19, 20);
             this.label_flag.TabIndex = 6;
@@ -250,7 +273,7 @@
             this.pic_flag.BackColor = System.Drawing.Color.Transparent;
             this.pic_flag.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pic_flag.Image = ((System.Drawing.Image)(resources.GetObject("pic_flag.Image")));
-            this.pic_flag.Location = new System.Drawing.Point(157, 3);
+            this.pic_flag.Location = new System.Drawing.Point(141, 1);
             this.pic_flag.Name = "pic_flag";
             this.pic_flag.Size = new System.Drawing.Size(36, 43);
             this.pic_flag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -263,7 +286,7 @@
             this.pic_clock.BackColor = System.Drawing.Color.Transparent;
             this.pic_clock.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pic_clock.Image = ((System.Drawing.Image)(resources.GetObject("pic_clock.Image")));
-            this.pic_clock.Location = new System.Drawing.Point(231, 3);
+            this.pic_clock.Location = new System.Drawing.Point(226, 0);
             this.pic_clock.Name = "pic_clock";
             this.pic_clock.Size = new System.Drawing.Size(55, 46);
             this.pic_clock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -312,6 +335,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel_audio.ResumeLayout(false);
+            this.panel_audio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_audio)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -350,6 +374,8 @@
         public System.Windows.Forms.Label label_time;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hướngDẫnCáchChơiToolStripMenuItem;
+        private System.Windows.Forms.Button LanClick;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

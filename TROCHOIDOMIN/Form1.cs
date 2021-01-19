@@ -11,11 +11,15 @@ using System.Threading;
 using System.Media;
 using WMPLib;
 using System.IO;
+using TROCHOIDOMIN.Sources;
+using TROCHOIDOMIN.Properties;
+using System.Net.NetworkInformation;
 
 namespace TROCHOIDOMIN
 {
     public partial class Form1 : Form
     {
+        LAN socket;
         // lớp CELL là mỗi ô trong trò chơi
         public class CELL
         {
@@ -393,7 +397,7 @@ namespace TROCHOIDOMIN
                     {
                         if (cell[i, j].flag == false && cell[i, j].open == false)
                         {
-                            leftMouse(x, y);
+                            leftMouse(x, y); 
                         }
                     }
                 }              
@@ -541,11 +545,9 @@ namespace TROCHOIDOMIN
                         if (cell[i, j].boom != 0 && cell[i, j].boom != -1) {
                             selectSafe(i,j);
                             tomauCell(i,j);
-                            //cell[i, j].bt.Image = null;
+                            cell[i, j].bt.Image = null;
                         }
-                    }
-
-                            
+                    }                            
                 }
         }
         public void selectSafe(int a, int b) {
@@ -557,6 +559,8 @@ namespace TROCHOIDOMIN
         public Form1()
         {
             InitializeComponent();
+            socket = new LAN();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -579,7 +583,7 @@ namespace TROCHOIDOMIN
             level = cb_level.Text;
             if (cb_level.Text != "Custom")
             {
-
+                 
                 try
                 {
                     resetGame();
@@ -728,6 +732,55 @@ namespace TROCHOIDOMIN
             hd.Show();
         }
 
+        private void LanClick_Click(object sender, EventArgs e)
+        {
+            socket.IP = LanClick.Text;
+            if(!socket.ConnectServer())
+            {
+                socket.CreateServer();
+                Thread listenthread = new Thread(() =>
+                {
+                    while (true)
+                    {
+                        Thread.Sleep(500);
+                        try
+                        {
+                            Listen();
+                            break;
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                });
+                listenthread.IsBackground = true;
+                listenthread.Start();
+            }
+            else
+            {
+                Thread listenthread = new Thread(() =>
+                {
+                    Listen();
+                });
+                listenthread.IsBackground = true;
+                listenthread.Start();
+                socket.Sent("Thong tin tu client");
+            }
+        }
+        void Listen()
+        {
+            string data = (string)socket.receive();
+            MessageBox.Show(data);
+        }
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            LanClick.Text = socket.GetLocalIPv4(NetworkInterfaceType.Wireless80211);
+            if(string.IsNullOrEmpty(LanClick.Text))
+            {
+                LanClick.Text = socket.GetLocalIPv4(NetworkInterfaceType.Ethernet);
+            }
+        }
         private void pic_trangthai_Click(object sender, EventArgs e)
         {
             newGame();
